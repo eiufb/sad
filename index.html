@@ -28,59 +28,43 @@
             min-height: 100vh; width: 100%; padding: 20px; box-sizing: border-box;
         }
 
-        /* --- EFECTO CARGA (SKELETON) --- */
-        .loading {
-            animation: pulse 1.5s infinite ease-in-out;
-            opacity: 0.5;
+        /* --- UI PREMIUM --- */
+        .loading { animation: pulse 1.5s infinite ease-in-out; opacity: 0.5; }
+        @keyframes pulse { 0% { opacity: 0.4; } 50% { opacity: 0.8; } 100% { opacity: 0.4; } }
+
+        /* TEXTOS DE GUÍA */
+        .guia-texto {
+            font-size: 13px;
+            color: var(--binance-yellow);
+            font-weight: bold;
+            margin: 15px 0 5px 0;
+            display: block;
         }
-        @keyframes pulse {
-            0% { opacity: 0.4; }
-            50% { opacity: 0.8; }
-            100% { opacity: 0.4; }
+        .guia-sub {
+            font-size: 10px;
+            color: #ccc;
+            margin-bottom: 5px;
+            display: block;
         }
 
-        /* --- BOTONES RÁPIDOS (CHIPS) --- */
         .chips-container {
-            display: flex;
-            gap: 8px;
-            overflow-x: auto;
-            padding: 10px 0;
-            width: 100%;
-            scrollbar-width: none; /* Ocultar scroll en Firefox */
+            display: flex; gap: 8px; overflow-x: auto; padding: 10px 0; width: 100%; scrollbar-width: none;
         }
-        .chips-container::-webkit-scrollbar { display: none; } /* Ocultar scroll en Chrome/Safari */
+        .chips-container::-webkit-scrollbar { display: none; }
         
         .chip {
-            background: rgba(255,255,255,0.15);
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 12px;
-            white-space: nowrap;
-            border: 1px solid rgba(255,255,255,0.2);
-            cursor: pointer;
-            transition: 0.2s;
+            background: rgba(255,255,255,0.15); padding: 8px 15px; border-radius: 20px;
+            font-size: 12px; white-space: nowrap; border: 1px solid rgba(255,255,255,0.2);
+            cursor: pointer; transition: 0.2s;
         }
         .chip:active { background: var(--binance-yellow); color: black; transform: scale(0.95); }
 
-        .status-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 20px 0;
-            position: relative;
-        }
-
+        .status-container { display: flex; justify-content: center; align-items: center; margin: 20px 0; position: relative; }
         .progress-ring { transform: rotate(-90deg); }
         .progress-ring__circle { transition: stroke-dashoffset 0.35s; transform-origin: 50% 50%; }
         .percentage-text { position: absolute; text-align: center; font-size: 24px; font-weight: bold; }
 
-        .radar-fugas {
-            background: var(--bg-glass);
-            border-radius: 20px;
-            padding: 15px;
-            margin: 15px 0;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
+        .radar-fugas { background: var(--bg-glass); border-radius: 20px; padding: 15px; margin: 15px 0; border: 1px solid rgba(255,255,255,0.1); }
         .bar-container { background: rgba(255,255,255,0.1); border-radius: 10px; height: 12px; margin: 10px 0; overflow: hidden; }
         .bar-fill { height: 100%; transition: 0.5s; width: 0%; }
 
@@ -89,34 +73,13 @@
 
         .deudas-section { background: rgba(255,23,68,0.1); border-radius: 15px; padding: 15px; margin: 15px 0; border-left: 4px solid var(--rojo-error); }
 
-        .card {
-            background: var(--bg-glass);
-            backdrop-filter: blur(15px);
-            border-radius: 20px;
-            padding: 15px;
-            text-align: center;
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 8px 32px 0 rgba(0,0,0,0.3);
-        }
+        .card { background: var(--bg-glass); backdrop-filter: blur(15px); border-radius: 20px; padding: 15px; text-align: center; border: 1px solid rgba(255,255,255,0.1); }
 
-        .suggestions {
-            background: linear-gradient(90deg, #1a237e, #311b92);
-            border-radius: 15px;
-            padding: 15px;
-            margin: 15px 0;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-left: 4px solid var(--binance-yellow);
-        }
+        .suggestions { background: linear-gradient(90deg, #1a237e, #311b92); border-radius: 15px; padding: 15px; margin: 15px 0; font-size: 14px; display: flex; align-items: center; gap: 10px; border-left: 4px solid var(--binance-yellow); }
 
-        input, select {
-            width: 100%; padding: 15px; margin: 8px 0; border-radius: 12px;
-            border: none; background: rgba(255,255,255,0.9); font-size: 16px; box-sizing: border-box;
-        }
+        input, select { width: 100%; padding: 15px; margin: 8px 0; border-radius: 12px; border: none; background: rgba(255,255,255,0.9); font-size: 16px; box-sizing: border-box; color: #333; }
 
-        .btn-main { background: var(--verde-exito); color: white; width: 100%; margin-top: 10px; font-weight: bold; border: none; padding: 15px; border-radius: 12px; cursor: pointer; }
+        .btn-main { background: var(--verde-exito); color: white; width: 100%; margin-top: 10px; font-weight: bold; border: none; padding: 18px; border-radius: 12px; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 200, 83, 0.3); }
         .recent-moves { background: var(--bg-glass); border-radius: 20px; padding: 15px; margin-top: 20px; }
     </style>
 </head>
@@ -143,14 +106,11 @@
         <div class="radar-fugas">
             <small>📊 Radar de Fugas (Necesario vs Variable)</small>
             <div style="display:flex; justify-content:space-between; font-size:10px; margin-top:10px;">
-                <span>Fijo</span>
-                <span id="val-fijo">0%</span>
+                <span>Fijo</span><span id="val-fijo">0%</span>
             </div>
             <div class="bar-container"><div id="bar-fijo" class="bar-fill" style="background: var(--verde-exito);"></div></div>
-            
             <div style="display:flex; justify-content:space-between; font-size:10px;">
-                <span>Variable</span>
-                <span id="val-variable">0%</span>
+                <span>Variable</span><span id="val-variable">0%</span>
             </div>
             <div class="bar-container"><div id="bar-variable" class="bar-fill" style="background: var(--naranja-alerta);"></div></div>
         </div>
@@ -166,6 +126,38 @@
                 <div class="bar-container" style="height:6px;"><div id="bar-emer" class="bar-fill" style="background: var(--verde-exito);"></div></div>
                 <small id="txt-emer" style="font-size:9px;">0%</small>
             </div>
+        </div>
+
+        <div class="form-container" style="margin-top: 20px;">
+            
+            <span class="guia-texto">1. Selecciona la Categoría</span>
+            <span class="guia-sub">Toca un botón para autocompletar:</span>
+            <div class="chips-container">
+                <div class="chip" onclick="setCat('Hijo')">🍼 Hijo</div>
+                <div class="chip" onclick="setCat('Hogar')">🏠 Hogar</div>
+                <div class="chip" onclick="setCat('Ocio')">🍔 Ocio</div>
+                <div class="chip" onclick="setCat('Transp')">🚗 Transp</div>
+                <div class="chip" onclick="setCat('Emergencia')">🛡️ Emergen.</div>
+            </div>
+
+            <span class="guia-texto">2. Detalles del Movimiento</span>
+            <label class="guia-sub">¿Qué compraste o pagaste?</label>
+            <input type="text" id="desc" placeholder="Ej: Supermercado, Pañales, Nafta...">
+            
+            <label class="guia-sub">Escribe la Categoría (o usa los botones de arriba):</label>
+            <input type="text" id="cat" placeholder="Categoría">
+            
+            <label class="guia-sub">Monto del dinero:</label>
+            <input type="number" id="monto" placeholder="0.00">
+            
+            <label class="guia-sub">¿Qué tipo de movimiento es?</label>
+            <select id="tipo-mov">
+                <option value="gasto">🔻 Gasto (Salida de dinero)</option>
+                <option value="ingreso">🔺 Ingreso (Entrada de dinero)</option>
+                <option value="prestamo">🤝 Presté (Dinero que me deben)</option>
+            </select>
+            
+            <button class="btn-main" onclick="registrar()">🚀 ENVIAR A MI PLANILLA</button>
         </div>
 
         <div class="deudas-section">
@@ -186,37 +178,15 @@
             </div>
         </div>
 
-        <div class="form-container" style="margin-top: 20px;">
-            <div class="chips-container">
-                <div class="chip" onclick="setCat('Hijo')">🍼 Hijo</div>
-                <div class="chip" onclick="setCat('Hogar')">🏠 Hogar</div>
-                <div class="chip" onclick="setCat('Ocio')">🍔 Ocio</div>
-                <div class="chip" onclick="setCat('Transp')">🚗 Transp</div>
-                <div class="chip" onclick="setCat('Emergencia')">🛡️ Emergen.</div>
-            </div>
-
-            <input type="text" id="desc" placeholder="¿Qué compraste?">
-            <input type="text" id="cat" placeholder="Categoría">
-            <input type="number" id="monto" placeholder="Monto">
-            <select id="tipo-mov">
-                <option value="gasto">🔻 Gasto</option>
-                <option value="ingreso">🔺 Ingreso</option>
-                <option value="prestamo">🤝 Presté</option>
-            </select>
-            
-            <button class="btn-main" onclick="registrar()">ENVIAR A SHEETS</button>
-        </div>
-
         <div class="recent-moves">
             <h4>Últimos Movimientos</h4>
             <div id="historial" style="max-height: 150px; overflow-y: auto; font-size:12px;">
-                Cargando...
+                Cargando historial...
             </div>
         </div>
     </div>
 
     <script>
-        // --- FUNCIÓN PARA CHIPS RÁPIDOS ---
         function setCat(valor) {
             document.getElementById('cat').value = valor;
         }
@@ -226,12 +196,10 @@
         };
 
         function actualizarDesdeSheets() {
-            // Añadimos clase de carga
             const elements = document.querySelectorAll('.loading');
             elements.forEach(el => el.classList.add('loading'));
 
             google.script.run.withSuccessHandler(function(datos) {
-                // Quitar clase de carga
                 elements.forEach(el => el.classList.remove('loading'));
 
                 document.getElementById('global-val').innerText = datos.totalGlobal;
@@ -256,7 +224,7 @@
         }
 
         function renderBar(idBar, idTxt, valor) {
-            const v = Math.min(valor, 100); // Para que no se salga de la barra
+            const v = Math.min(valor, 100);
             document.getElementById(idBar).style.width = v + "%";
             document.getElementById(idTxt).innerText = Math.round(valor) + "%";
         }
@@ -269,15 +237,14 @@
                 tipo: document.getElementById('tipo-mov').value
             };
 
-            if(!data.monto || !data.desc) return alert("Por favor completa los datos.");
+            if(!data.monto || !data.desc) return alert("Papá, completa qué compraste y el monto.");
 
-            // Botón en estado "enviando"
             const btn = document.querySelector('.btn-main');
-            btn.innerText = "ENVIANDO...";
+            btn.innerText = "ENVIANDO DATOS...";
             btn.disabled = true;
 
             google.script.run.withSuccessHandler(function() {
-                btn.innerText = "ENVIAR A SHEETS";
+                btn.innerText = "🚀 ENVIAR A MI PLANILLA";
                 btn.disabled = false;
                 actualizarDesdeSheets(); 
                 document.getElementById('desc').value = "";
